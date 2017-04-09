@@ -52,11 +52,16 @@ I use it because:
  3. LaTeX does beautiful math.
  4. LaTeX is beautiful all around.
  5. LaTeX doesn't bog down with long docs like MS Word.
+ 6. LaTeX is free and open, and since it's based on mark-up of plain text
+    files, everyone can use their preferred text editors to contribute to 
+    documents.
 
 
 I still find it frustrating because:
   1. It's got a learning curve.
-  2. Error messages feel cryptic. (But less cryptic than Word just doing something inexplicable. https://twitter.com/gossipgriII/status/713425874167537664)
+  2. Error messages feel cryptic. (But less cryptic than Word just doing
+     something inexplicable.
+     https://twitter.com/gossipgriII/status/713425874167537664)
   3. I haven't mastered collaborative editing yet, but solutions exist.
 
 ## 3. How do I install LaTeX?
