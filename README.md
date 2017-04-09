@@ -27,7 +27,24 @@ text is the standard in the world of python documentation. Markdown is the
 standard on github. Pick your poison.
 -->
 ## 2. What is LaTeX and why would I want to use it?
-LaTeX is a markup language for typesetting. It's not a WYSIWYG like most word processors (i.e MS Word). To some extent, you worry about the content and let the engine handle the layout. Really: it's like programming--if you put in the effort to get up the learning curve, you save time in the end by automating your document creation.
+LaTeX is a markup language for typesetting. It's not a WYSIWYG like most word
+processors (i.e MS Word). To some extent, you worry about the content and let
+the engine handle the layout. 
+<!--
+Why does this matter? There are several advantages to de-coupling the *format*
+of the document from it's *content*:
+ - In principal, it allows the author of technical documents to focus their
+   time and effort on the clear, accurate representation of content rather 
+   than formatting.
+ - It promotes re-use of content, which is a boon to reproducibility for
+   technical/scientific work. For example, the same figures and even text can
+   be formatted a report, a poster, and a powerpoint-style presentation.
+   If you update a figure, you only need to do so once and the change is 
+   reflected in **all** of your documents & presentations.
+-->
+Really: it's like programming--if you put in the
+effort to get up the learning curve, you save time in the end by automating
+your document creation.
 
 I use it because:
  1. LaTeX handles citations for you.
