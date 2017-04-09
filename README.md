@@ -71,9 +71,16 @@ I still find it frustrating because:
 
 Everything in linux is simple.
 
+```bash
     sudo apt-get install texlive
+```
 
-Then you probably want a front end like [TeXWorks](https://www.tug.org/texworks/), which is available in the Software Center for Ubuntu users, or here more generally. I think the Mac and Windows distributions come with this already.
+
+You may also want front-end (a GUI editor) like
+[TeXWorks](https://www.tug.org/texworks/), which is available in the Software
+Center for Ubuntu users, or [here](https://www.tug.org/texworks/) more
+generally. I think the Mac and Windows distributions come with some form of
+GUI-based editor already.
 
 ### OSX
 
