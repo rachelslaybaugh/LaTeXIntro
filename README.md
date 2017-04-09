@@ -64,7 +64,11 @@ I still find it frustrating because:
      https://twitter.com/gossipgriII/status/713425874167537664)
   3. I haven't mastered collaborative editing yet, but solutions exist.
 
-## 3. How do I install LaTeX?
+## 3. How do I pronounce LaTeX?
+
+Check it out, the last letter is the Greek letter $$\Chi$$. So, it definitely has to end in a K sound. But, is it Lay or Lah? The developers say it's up to you.
+
+## 4. How do I install LaTeX?
 [For some reason](http://tex.stackexchange.com/questions/974/why-is-the-mactex-distribution-so-large-is-there-anything-smaller-for-os-x), LaTeX takes up over a gigabyte, so installing may take a few minutes.
 
 ### Linux
@@ -106,7 +110,7 @@ the website.
 
 Install [MikTeX](http://miktex.org/).
 
-## 4. How do I write LaTeX?
+## 5. How do I write LaTeX?
 
 http://tobi.oetiker.ch/lshort/lshort.pdf
 
@@ -122,9 +126,6 @@ http://tobi.oetiker.ch/lshort/lshort.pdf
 
 Some folks will find the text editor option the most extensible and glorious. More power to them, but I am not one of those folks. (You'd just type pdflatex *filename.tex* in the command line to compile.)
 
-## 5. How do I pronounce LaTeX?
-
-Check it out, the last letter is the Greek letter $$\Chi$$. So, it definitely has to end in a K sound. But, is it Lay or Lah? The developers say it's up to you.
 
 ## 6. Stuff we'll try to cover
   1. Make a basic doc
