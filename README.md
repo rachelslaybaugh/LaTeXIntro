@@ -72,11 +72,26 @@ I still find it frustrating because:
 Everything in linux is simple.
 
 ```bash
-    sudo apt-get install texlive
+sudo apt-get install texlive
 ```
 
+Although the `texlive` package uses over 1 GB of disk space, there are many 
+LaTeX extensions that enable even more features.
+In (debian-based) linux, the easiest way to install these LaTeX extensions is
+with `apt-get`. 
+For example, if you're interested in pretty formatting of radionuclides, you
+will want the `mhchem` LaTeX package, which can be found in the
+`texlive-science` debian package:
 
-You may also want front-end (a GUI editor) like
+```bash
+sudo apt-get install texlive-science
+```
+
+The LaTeX packages that I have found useful and install on my system by 
+default can be found in the `install_latex.sh` script in 
+[this repo.](https://github.com/rossbar/UbuntuInstallScripts)
+
+You may also want a front-end (i.e. GUI editor) like
 [TeXWorks](https://www.tug.org/texworks/), which is available in the Software
 Center for Ubuntu users, or [here](https://www.tug.org/texworks/) more
 generally. I think the Mac and Windows distributions come with some form of
