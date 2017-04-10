@@ -27,7 +27,7 @@ text is the standard in the world of python documentation. Markdown is the
 standard on github. Pick your poison.
 -->
 ## 2. What is LaTeX and why would I want to use it?
-LaTeX is a markup language for typesetting. It's not a WYSIWYG like most word
+LaTeX is a markup language for typesetting. It's not WYSIWYG like most word
 processors (i.e MS Word). To some extent, you worry about the content and let
 the engine handle the layout. 
 <!--
@@ -83,7 +83,7 @@ Although the `texlive` package uses over 1 GB of disk space, there are many
 LaTeX extensions that enable even more features.
 In (debian-based) linux, the easiest way to install these LaTeX extensions is
 with `apt-get`. 
-For example, if you're interested in pretty formatting of radionuclides, you
+For example, if you're interested in pretty formatting for radionuclides, you
 will want the `mhchem` LaTeX package, which can be found in the
 `texlive-science` debian package:
 
@@ -129,15 +129,16 @@ Some folks will find the text editor option the most extensible and glorious. Mo
 ## 6. How do I actually produce the document?
 
 The GUI LaTeX editors all have their various buttons in the interface to 
-convert your source files (.tex) into a finished document for viewing (.pdf).
+convert your source files (.tex, .bib, etc.) into a finished document for
+viewing (.pdf).
 You can do the build steps yourself on the commandline.
 Traditionally, there are two steps to building a pdf file from the latex 
 source.
 Assuming you have a latex document named 'report.tex':
 
 ```bash
-latex main.tex
-dvipdf main.dvi
+latex report.tex
+dvipdf report.dvi
 ```
 
 The first step converts the .tex source into an intermediate dvi format, while
@@ -146,20 +147,22 @@ In practice, the dvi intermediate step is rarely used.
 There is a convenience command that accomplishes the entire build in one step:
 
 ```bash
-pdflatex main.tex
+pdflatex report.tex
 ```
 ### NOTE
 
-There is one quirk related to building LaTeX with a bibliography. 
+There is one quirk related to building LaTeX with internal references and/or
+a bibliography.
 For some reason (that I've never taken the time to understand), LaTeX requires
-two separate calls to `latex` after building the bibliography (with the 
-`bibtex` command).
-The sequence of commands to properly build a LaTeX document with a bibliogrpahy
-(name references.bib, in this example) is:
+two separate calls to `latex` to get the references right. 
+This holds true for the bibliography as well (after building the bibliography 
+with the `bibtex` command).
+The sequence of commands to properly build a LaTeX document with references
+(`\ref`) and/or a bibliography (name `references.bib`, in this example) is:
 
 ```bash
 latex report.tex
-bibtex references.bib
+bibtex report.aux
 latex report.tex
 latex report.tex
 dvipdf report.dvi
