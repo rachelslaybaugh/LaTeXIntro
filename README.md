@@ -172,15 +172,31 @@ Or, with `pdflatex`:
 
 ```bash
 pdflatex report.tex
-bibtex references.bib
+bibtex report.aux
 pdflatex report.tex
 pdflatex report.tex
 ```
 
-If you don't include the second build step, the citation references in your
-pdf won't be built properly and will likely show up as '?'.
+If you don't include the second build step, the references and citations in
+your pdf won't be built properly and will likely show up as '?'.
 
-## 7. Stuff we'll try to cover
+# Example time
+
+> *One must learn by doing the thing; though you think you know it, you have no
+> certainty until you try.*
+> 
+> \- Sophocles
+
+An example of LaTeX in the wild that is most relevant to undergraduates is 
+writing lab reports (you typically have to get through at least a couple lab
+classes before you start submitting your work to *Nature*).
+We'll use a lab report then as a skeleton example to learn some of the basics
+of LaTeX.
+For content, we'll focus on Arthur H. Compton's work on inelastic scattering of
+photons (which you'll encounter again if you take NE 101 and NE 104) to give us
+something to talk about in our report.
+
+## Stuff we'll try to cover
   1. Make a basic doc
   2. documentclass (article, beamer, exam, letter, book, *others*)
   3. preamble
@@ -196,7 +212,7 @@ pdf won't be built properly and will likely show up as '?'.
     2. figure
 
 
-## 8. What are the Parts of a Document?
+## What are the Parts of a Document?
 
 LaTeX documents have numerous parts.
 
