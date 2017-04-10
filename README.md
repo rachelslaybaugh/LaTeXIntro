@@ -126,8 +126,58 @@ http://tobi.oetiker.ch/lshort/lshort.pdf
 
 Some folks will find the text editor option the most extensible and glorious. More power to them, but I am not one of those folks. (You'd just type pdflatex *filename.tex* in the command line to compile.)
 
+## 6. How do I actually produce the document?
 
-## 6. Stuff we'll try to cover
+The GUI LaTeX editors all have their various buttons in the interface to 
+convert your source files (.tex) into a finished document for viewing (.pdf).
+You can do the build steps yourself on the commandline.
+Traditionally, there are two steps to building a pdf file from the latex 
+source.
+Assuming you have a latex document named 'report.tex':
+
+```bash
+latex main.tex
+dvipdf main.dvi
+```
+
+The first step converts the .tex source into an intermediate dvi format, while
+the second converts the dvi into the familiar pdf.
+In practice, the dvi intermediate step is rarely used.
+There is a convenience command that accomplishes the entire build in one step:
+
+```bash
+pdflatex main.tex
+```
+### NOTE
+
+There is one quirk related to building LaTeX with a bibliography. 
+For some reason (that I've never taken the time to understand), LaTeX requires
+two separate calls to `latex` after building the bibliography (with the 
+`bibtex` command).
+The sequence of commands to properly build a LaTeX document with a bibliogrpahy
+(name references.bib, in this example) is:
+
+```bash
+latex report.tex
+bibtex references.bib
+latex report.tex
+latex report.tex
+dvipdf report.dvi
+```
+
+Or, with `pdflatex`:
+
+```bash
+pdflatex report.tex
+bibtex references.bib
+pdflatex report.tex
+pdflatex report.tex
+```
+
+If you don't include the second build step, the citation references in your
+pdf won't be built properly and will likely show up as '?'.
+
+## 7. Stuff we'll try to cover
   1. Make a basic doc
   2. documentclass (article, beamer, exam, letter, book, *others*)
   3. preamble
@@ -143,7 +193,7 @@ Some folks will find the text editor option the most extensible and glorious. Mo
     2. figure
 
 
-## 7. What are the Parts of a Document?
+## 8. What are the Parts of a Document?
 
 LaTeX documents have numerous parts.
 
