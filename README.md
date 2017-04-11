@@ -27,7 +27,24 @@ text is the standard in the world of python documentation. Markdown is the
 standard on github. Pick your poison.
 -->
 ## 2. What is LaTeX and why would I want to use it?
-LaTeX is a markup language for typesetting. It's not a WYSIWYG like most word processors (i.e MS Word). To some extent, you worry about the content and let the engine handle the layout. Really: it's like programming--if you put in the effort to get up the learning curve, you save time in the end by automating your document creation.
+LaTeX is a markup language for typesetting. It's not WYSIWYG like most word
+processors (i.e MS Word). To some extent, you worry about the content and let
+the engine handle the layout. 
+<!--
+Why does this matter? There are several advantages to de-coupling the *format*
+of the document from it's *content*:
+ - In principal, it allows the author of technical documents to focus their
+   time and effort on the clear, accurate representation of content rather 
+   than formatting.
+ - It promotes re-use of content, which is a boon to reproducibility for
+   technical/scientific work. For example, the same figures and even text can
+   be formatted a report, a poster, and a powerpoint-style presentation.
+   If you update a figure, you only need to do so once and the change is 
+   reflected in **all** of your documents & presentations.
+-->
+Really: it's like programming--if you put in the
+effort to get up the learning curve, you save time in the end by automating
+your document creation.
 
 I use it because:
  1. LaTeX handles citations for you.
@@ -35,23 +52,54 @@ I use it because:
  3. LaTeX does beautiful math.
  4. LaTeX is beautiful all around.
  5. LaTeX doesn't bog down with long docs like MS Word.
+ 6. LaTeX is free and open, and since it's based on mark-up of plain text
+    files, everyone can use their preferred text editors to contribute to 
+    documents.
 
 
 I still find it frustrating because:
   1. It's got a learning curve.
-  2. Error messages feel cryptic. (But less cryptic than Word just doing something inexplicable. https://twitter.com/gossipgriII/status/713425874167537664)
+  2. Error messages feel cryptic. (But less cryptic than Word just doing
+     something inexplicable.
+     https://twitter.com/gossipgriII/status/713425874167537664)
   3. I haven't mastered collaborative editing yet, but solutions exist.
 
-## 3. How do I install LaTeX?
+## 3. How do I pronounce LaTeX?
+
+Check it out, the last letter is the Greek letter $$\Chi$$. So, it definitely has to end in a K sound. But, is it Lay or Lah? The developers say it's up to you.
+
+## 4. How do I install LaTeX?
 [For some reason](http://tex.stackexchange.com/questions/974/why-is-the-mactex-distribution-so-large-is-there-anything-smaller-for-os-x), LaTeX takes up over a gigabyte, so installing may take a few minutes.
 
 ### Linux
 
 Everything in linux is simple.
 
-    sudo apt-get install texlive
+```bash
+sudo apt-get install texlive
+```
 
-Then you probably want a front end like [TeXWorks](https://www.tug.org/texworks/), which is available in the Software Center for Ubuntu users, or here more generally. I think the Mac and Windows distributions come with this already.
+Although the `texlive` package uses over 1 GB of disk space, there are many 
+LaTeX extensions that enable even more features.
+In (debian-based) linux, the easiest way to install these LaTeX extensions is
+with `apt-get`. 
+For example, if you're interested in pretty formatting for radionuclides, you
+will want the `mhchem` LaTeX package, which can be found in the
+`texlive-science` debian package:
+
+```bash
+sudo apt-get install texlive-science
+```
+
+The LaTeX packages that I have found useful and install on my system by 
+default can be found in the `install_latex.sh` script in 
+[this repo.](https://github.com/rossbar/UbuntuInstallScripts)
+
+You may also want a front-end (i.e. GUI editor) like
+[TeXWorks](https://www.tug.org/texworks/), which is available in the Software
+Center for Ubuntu users, or [here](https://www.tug.org/texworks/) more
+generally. I think the Mac and Windows distributions come with some form of
+GUI-based editor already.
 
 ### OSX
 
@@ -62,7 +110,7 @@ the website.
 
 Install [MikTeX](http://miktex.org/).
 
-## 4. How do I write LaTeX?
+## 5. How do I write LaTeX?
 
 http://tobi.oetiker.ch/lshort/lshort.pdf
 
@@ -78,11 +126,77 @@ http://tobi.oetiker.ch/lshort/lshort.pdf
 
 Some folks will find the text editor option the most extensible and glorious. More power to them, but I am not one of those folks. (You'd just type pdflatex *filename.tex* in the command line to compile.)
 
-## 5. How do I pronounce LaTeX?
+## 6. How do I actually produce the document?
 
-Check it out, the last letter is the Greek letter $$\Chi$$. So, it definitely has to end in a K sound. But, is it Lay or Lah? The developers say it's up to you.
+The GUI LaTeX editors all have their various buttons in the interface to 
+convert your source files (.tex, .bib, etc.) into a finished document for
+viewing (.pdf).
+You can do the build steps yourself on the commandline.
+Traditionally, there are two steps to building a pdf file from the latex 
+source.
+Assuming you have a latex document named 'report.tex':
 
-## 6. Stuff we'll try to cover
+```bash
+latex report.tex
+dvipdf report.dvi
+```
+
+The first step converts the .tex source into an intermediate dvi format, while
+the second converts the dvi into the familiar pdf.
+In practice, the dvi intermediate step is rarely used.
+There is a convenience command that accomplishes the entire build in one step:
+
+```bash
+pdflatex report.tex
+```
+### NOTE
+
+There is one quirk related to building LaTeX with internal references and/or
+a bibliography.
+For some reason (that I've never taken the time to understand), LaTeX requires
+two separate calls to `latex` to get the references right. 
+This holds true for the bibliography as well (after building the bibliography 
+with the `bibtex` command).
+The sequence of commands to properly build a LaTeX document with references
+(`\ref`) and/or a bibliography (name `references.bib`, in this example) is:
+
+```bash
+latex report.tex
+bibtex report.aux
+latex report.tex
+latex report.tex
+dvipdf report.dvi
+```
+
+Or, with `pdflatex`:
+
+```bash
+pdflatex report.tex
+bibtex report.aux
+pdflatex report.tex
+pdflatex report.tex
+```
+
+If you don't include the second build step, the references and citations in
+your pdf won't be built properly and will likely show up as '?'.
+
+# Example time
+
+> *One must learn by doing the thing; though you think you know it, you have no
+> certainty until you try.*
+> 
+> \- Sophocles
+
+An example of LaTeX in the wild that is most relevant to undergraduates is 
+writing lab reports (you typically have to get through at least a couple lab
+classes before you start submitting your work to *Nature*).
+We'll use a lab report then as a skeleton example to learn some of the basics
+of LaTeX.
+For content, we'll focus on Arthur H. Compton's work on inelastic scattering of
+photons (which you'll encounter again if you take NE 101 and NE 104) to give us
+something to talk about in our report.
+
+## Stuff we'll try to cover
   1. Make a basic doc
   2. documentclass (article, beamer, exam, letter, book, *others*)
   3. preamble
@@ -98,7 +212,7 @@ Check it out, the last letter is the Greek letter $$\Chi$$. So, it definitely ha
     2. figure
 
 
-## 7. What are the Parts of a Document?
+## What are the Parts of a Document?
 
 LaTeX documents have numerous parts.
 
